@@ -31,7 +31,7 @@ function CreatePoll() {
       return;
     }
     try {
-      await axios.post('http://localhost:5000/api/polls', {
+      await axios.post('http://3.108.221.59:5000/api/polls', {
         question,
         options: validOptions
       });

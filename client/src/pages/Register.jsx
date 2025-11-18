@@ -16,7 +16,7 @@ function Register() {
     };
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/auth/register',
+        'http://3.108.221.59:5000/api/auth/register',
         userData
       );
       console.log('Registration successful:', response.data);

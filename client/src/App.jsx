@@ -13,7 +13,7 @@ function App() {
   const fetchPolls = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/polls');
+      const response = await axios.get('http://3.108.221.59:5000/api/polls');
       setPolls(response.data);
       setError('');
     } catch (err) {
@@ -31,7 +31,7 @@ function App() {
     if (!window.confirm('Are you sure you want to delete this poll?')) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/polls/${pollId}`);
+      await axios.delete(`http://3.108.221.59:5000/api/polls/${pollId}`);
       setPolls(polls.filter((poll) => poll._id !== pollId));
     } catch (err) {
       console.error('Error deleting poll:', err);
@@ -54,7 +54,7 @@ function App() {
     // Update the screen instantly!
     setPolls(newPolls);
     try{
-      await axios.post(`http://localhost:5000/api/polls/${pollId}/vote`, {
+      await axios.post(`http://3.108.221.59:5000/api/polls/${pollId}/vote`, {
         optionIndex,
       });
     }
