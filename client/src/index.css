@@ -1,0 +1,284 @@
+/* client/src/index.css */
+:root {
+  --bg-color: #0f172a;       /* Deep Blue/Black */
+  --card-bg: #1e293b;        /* Lighter Slate */
+  --primary: #6366f1;        /* Indigo */
+  --primary-hover: #4f46e5;  /* Darker Indigo */
+  --text-main: #f8fafc;      /* Off-white */
+  --text-muted: #94a3b8;     /* Grey text */
+  --danger: #ef4444;         /* Red */
+  --success: #22c55e;        /* Green */
+  --radius: 12px;            /* Rounded corners */
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* --- Layout --- */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* --- Typography --- */
+h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.05rem; }
+h2 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main); }
+p { color: var(--text-muted); line-height: 1.6; }
+
+/* --- Buttons --- */
+button {
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: none;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+.btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid #334155;
+}
+.btn-secondary:hover { border-color: var(--text-main); color: var(--text-main); }
+
+.btn-danger { background-color: var(--danger); color: white; }
+.btn-logout { background-color: #334155; color: white; margin-left: 10px; }
+
+/* --- Forms --- */
+input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  background-color: var(--bg-color);
+  border: 1px solid #334155;
+  border-radius: var(--radius);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus { border-color: var(--primary); }
+label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-muted); }
+
+/* --- Cards (The Polls) --- */
+.poll-card {
+  background-color: var(--card-bg);
+  border: 1px solid #334155;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.poll-card:hover { border-color: var(--primary); }
+
+.poll-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; display: block; }
+
+/* --- Vote Options --- */
+.vote-option {
+  background-color: rgba(255,255,255,0.03);
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.vote-option:hover {
+  background-color: rgba(99, 102, 241, 0.1); /* Tint of primary color */
+  border-color: var(--primary);
+  transform: translateX(5px);
+}
+
+.vote-count {
+  background-color: #334155;
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* --- Navigation Header --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 1.5rem;
+}
+
+.nav-actions { display: flex; gap: 10px; align-items: center;}
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100; 
+  
+  /* The Glass Effect */
+  background-color: rgba(15, 23, 42, 0.15); /* Semi-transparent dark blue */
+  backdrop-filter: blur(6.5px); /* The blur magic */
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.nav-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #6366f1, #ec4899); /* Gradient Text */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  text-decoration: none;
+  letter-spacing: -1px;
+}
+
+/* --- Page Animations --- */
+.page-content {
+  animation: fadeIn 0.5s ease-out;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem 2rem; /* Extra bottom padding for scrolling */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* --- client/src/index.css --- */
+
+/* 1. The Container */
+.starry-background {
+  position: fixed; /* Locks it to the screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); /* Deep Space */
+  z-index: -1; /* Puts it BEHIND your app */
+  overflow: hidden;
+}
+
+/* 2. The Animation */
+@keyframes animStar {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-2000px); }
+}
+/* client/src/index.css */
+
+/* ... keep .starry-background ... */
+
+/* The Animation moves the whole layer UP by 2000px */
+@keyframes animStar {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-2000px); }
+}
+
+/* --- SMALL STARS --- */
+#stars {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  /* The shadow creates the stars */
+  box-shadow: 
+    10vw 10vh #FFF, 20vw 40vh #FFF, 50vw 80vh #FFF, 80vw 10vh #FFF, 
+    5vw 90vh #FFF, 90vw 50vh #FFF, 60vw 20vh #FFF, 30vw 60vh #FFF, 
+    15vw 15vh #FFF, 45vw 45vh #FFF, 75vw 75vh #FFF, 25vw 25vh #FFF, 
+    85vw 85vh #FFF, 95vw 5vh #FFF, 5vw 55vh #FFF, 35vw 95vh #FFF, 
+    65vw 35vh #FFF, 12vw 68vh #FFF, 88vw 12vh #FFF, 42vw 28vh #FFF;
+  animation: animStar 50s linear infinite;
+}
+
+#stars:after {
+  content: " ";
+  position: absolute;
+  top: 2000px; /* This is the KEY. It places the clone 2000px below. */
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  /* MUST be identical to the box-shadow above */
+  box-shadow: 
+    10vw 10vh #FFF, 20vw 40vh #FFF, 50vw 80vh #FFF, 80vw 10vh #FFF, 
+    5vw 90vh #FFF, 90vw 50vh #FFF, 60vw 20vh #FFF, 30vw 60vh #FFF, 
+    15vw 15vh #FFF, 45vw 45vh #FFF, 75vw 75vh #FFF, 25vw 25vh #FFF, 
+    85vw 85vh #FFF, 95vw 5vh #FFF, 5vw 55vh #FFF, 35vw 95vh #FFF, 
+    65vw 35vh #FFF, 12vw 68vh #FFF, 88vw 12vh #FFF, 42vw 28vh #FFF;
+}
+
+/* --- MEDIUM STARS --- */
+#stars2 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 
+    12vw 22vh #FFF, 32vw 52vh #FFF, 72vw 82vh #FFF, 92vw 12vh #FFF, 
+    2vw 92vh #FFF, 52vw 32vh #FFF, 82vw 62vh #FFF, 22vw 18vh #FFF, 
+    42vw 48vh #FFF, 62vw 78vh #FFF;
+  animation: animStar 100s linear infinite;
+}
+
+#stars2:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 
+    12vw 22vh #FFF, 32vw 52vh #FFF, 72vw 82vh #FFF, 92vw 12vh #FFF, 
+    2vw 92vh #FFF, 52vw 32vh #FFF, 82vw 62vh #FFF, 22vw 18vh #FFF, 
+    42vw 48vh #FFF, 62vw 78vh #FFF;
+}
+
+/* --- LARGE STARS --- */
+#stars3 {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: 
+    5vw 5vh #FFF, 25vw 25vh #FFF, 55vw 55vh #FFF, 85vw 85vh #FFF;
+  animation: animStar 150s linear infinite;
+}
+
+#stars3:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: 
+    5vw 5vh #FFF, 25vw 25vh #FFF, 55vw 55vh #FFF, 85vw 85vh #FFF;
+}

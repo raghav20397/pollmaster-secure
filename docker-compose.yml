@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  # backend
+  server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb://mongo:27017/polling-app
+    depends_on:
+      - mongo
+  # frontend
+  client:
+    build: ./client
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server
+    volumes:
+      - ./client/src:/app/src
+  # database
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+      
+# permanent volume
+volumes:
+  mongo-data:
