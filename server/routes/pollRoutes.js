@@ -72,7 +72,7 @@ router.delete('/:id', protect, async (req, res) => {
     if (!poll) {
       return res.status(404).json({ message: 'Poll not found' });
     }
-    if (poll.user.toString() !== req.user._id.toString() && poll.user._id.toString() != 'admin') {
+    if (poll.user.toString() !== req.user._id.toString() && req.user.username.toLowerCase() !== 'admin') {
       return res.status(401).json({ message: 'Not authorized to delete this poll' });
     }
     await poll.deleteOne();
